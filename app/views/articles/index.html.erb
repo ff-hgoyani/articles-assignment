@@ -1,6 +1,6 @@
 
 
-<table id="articles" class="display">
+<table id="articles" class="display" style="width: 100%;" >
   <thead>
     <tr>
       <th>Title</th>
@@ -15,15 +15,23 @@
         <td><%= article.title %></td>
         <td><%= article.tags %></td>
         <td><%= article.last_updated %></td>
-        <td><%= link_to 'Show', article %></td>
-        <td><%= link_to 'Edit', edit_article_path(article) %></td>
-        <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<script type="text/javascript">
+    oTable = $('#articles').dataTable({
+        "bJQueryUI": true,
+        "bSort": true,
+        "bFilter": true,
+        "iDisplayLength": 15,
+        "sPaginationType": "full_numbers",
+        "aLengthMenu": [
+            [5, 15, 25, 50, -1],
+            [5, 15, 25, 50, "All"]
+        ]
+    });
+</script>
 
-<br>
 
-<%= link_to 'New Article', new_article_path %>
 
